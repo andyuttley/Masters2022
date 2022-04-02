@@ -18,8 +18,8 @@ st.write(mediumlink, " | ", linkedinlink)
 
 
 #image
-#image = Image.open('Tiger.jpg')
-#st.image(image)
+image = Image.open('mastersbow.jpg')
+st.image(image)
 
 #Bring in the data
 data = pd.read_excel('PGA_Database2.xlsx')
