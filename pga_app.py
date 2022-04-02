@@ -22,7 +22,7 @@ image = Image.open('Tiger.jpg')
 st.image(image)
 
 #Bring in the data
-data = pd.read_excel('PGA_Database.xlsx')
+data = pd.read_excel('PGA_Database2.xlsx')
 st.write("## THE DATA BEING USED")
 data
 
