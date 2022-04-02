@@ -59,8 +59,8 @@ df_user = user_input_features()
 
 if st.sidebar.checkbox("Choose a recency bias"):
     def user_input_biased():
-        thisyear = st.sidebar.slider('2021 weighting', 0, 100, 100, 5)
-        lastyear = st.sidebar.slider('2020 weighting', 0, 100, 80, 5)
+        thisyear = st.sidebar.slider('2022 weighting', 0, 100, 100, 5)
+        lastyear = st.sidebar.slider('2021 weighting', 0, 100, 80, 5)
         biased_data = {'this year': thisyear/100,
                        'last year': lastyear/100}
         biased = pd.DataFrame(biased_data, index=[0])
@@ -93,15 +93,15 @@ st.write(
 )
 
 def results_output():
-    sg_ott = (data['SG_OTT_2020']*df_user_biased['last year'][0] + data['SG_OTT_2021']*df_user_biased['this year'][0]) * df_user['SG OTT'][0] / 100
-    sg_a2g = (data['SG_A2G_2020']*df_user_biased['last year'][0]  + data['SG_A2G_2021']*df_user_biased['this year'][0]) * df_user['SG A2G'][0] / 100
-    sg_atg = (data['SG_ATG_2020']*df_user_biased['last year'][0]  + data['SG_ATG_2021']*df_user_biased['this year'][0]) * df_user['SG ATG'][0] / 100
-    sg_total = (data['SG_Total_2020']*df_user_biased['last year'][0]  + data['SG_Total_2021']*df_user_biased['this year'][0]) * df_user['SG Total'][0]/100
-    sg_putt = (data['SG_Putting2020']*df_user_biased['last year'][0]  + data['SG_Putting2021']*df_user_biased['this year'][0]) * df_user['SG Putt'][0]/100
+    sg_ott = (data['SG_OTT_2022']*df_user_biased['this year'][0] + data['SG_OTT_2021']*df_user_biased['last year'][0]) * df_user['SG OTT'][0] / 100
+    sg_a2g = (data['SG_A2G_2022']*df_user_biased['this year'][0]  + data['SG_A2G_2021']*df_user_biased['last year'][0]) * df_user['SG A2G'][0] / 100
+    sg_atg = (data['SG_ATG_2022']*df_user_biased['this year'][0]  + data['SG_ATG_2021']*df_user_biased['last year'][0]) * df_user['SG ATG'][0] / 100
+    sg_total = (data['SG_Total_2022']*df_user_biased['this year'][0]  + data['SG_Total_2021']*df_user_biased['last year'][0]) * df_user['SG Total'][0]/100
+    sg_putt = (data['SG_Putting2022']*df_user_biased['this year'][0]  + data['SG_Putting2021']*df_user_biased['last year'][0]) * df_user['SG Putt'][0]/100
     #SG Par requires additional logic
-    sgpar5 = (5 - data['Par5ScoringAvg_2020'] * df_user_biased['last year'][0] + 5 - data['Par5ScoringAvg_2021'] * df_user_biased['this year'][0]) * df_user['SG Par 5'][0] / 100
-    sgpar4 = (4 - data['Par4ScoringAvg_2020'] * df_user_biased['last year'][0] + 4 - data['Par4ScoringAvg_2021'] * df_user_biased['this year'][0]) * df_user['SG Par 4'][0] / 100
-    sgpar3 = (3 - data['Par3ScoringAvg_2020'] * df_user_biased['last year'][0] + 3 - data['Par3ScoringAvg_2021'] * df_user_biased['this year'][0]) * df_user['SG Par 3'][0] / 100
+    sgpar5 = (5 - data['Par5ScoringAvg_2022'] * df_user_biased['this year'][0] + 5 - data['Par5ScoringAvg_2021'] * df_user_biased['last year'][0]) * df_user['SG Par 5'][0] / 100
+    sgpar4 = (4 - data['Par4ScoringAvg_2022'] * df_user_biased['this year'][0] + 4 - data['Par4ScoringAvg_2021'] * df_user_biased['last year'][0]) * df_user['SG Par 4'][0] / 100
+    sgpar3 = (3 - data['Par3ScoringAvg_2022'] * df_user_biased['this year'][0] + 3 - data['Par3ScoringAvg_2021'] * df_user_biased['last year'][0]) * df_user['SG Par 3'][0] / 100
     #SG Masters diff calc
     sgmasters = (data['MastersSG']*((df_user_biased['last year'][0] + df_user_biased['this year'][0])/2) * df_user['SG Masters'][0]/100)
 
