@@ -31,7 +31,8 @@ st.sidebar.header('Choose your weightings')
 
 st.sidebar.write("""#### Choose your SG bias""")
 def user_input_features():
-    sgott = st.sidebar.slider('SG Off the Tee', 0, 100, 90, 5)
+    sgott = st.sidebar.slider('SG Off the Tee', 0, 100, 80, 5)
+    sgt2g = st.sidebar.slider('SG Tee to Green', 0, 100, 90, 5)
     sga2g = st.sidebar.slider('SG Approach to Green', 0, 100, 95, 5)
     sgatg = st.sidebar.slider('SG Around the Green', 0, 100, 70, 5)
     sgputt = st.sidebar.slider('SG Putting', 0, 100, 25, 5)
@@ -44,6 +45,7 @@ def user_input_features():
 
 
     user_data = {'SG OTT': sgott,
+                 'SG T2G': sgt2g,
                  'SG A2G': sga2g,
                  'SG ATG': sgatg,
                  'SG Putt': sgputt,
@@ -94,6 +96,7 @@ st.write(
 
 def results_output():
     sg_ott = (data['SG_OTT_2022']*df_user_biased['this year'][0] + data['SG_OTT_2021']*df_user_biased['last year'][0]) * df_user['SG OTT'][0] / 100
+    sg_t2g = (data['SG_TeeToGreen_2022']*df_user_biased['this year'][0] + data['SG_TeeToGreen_2021']*df_user_biased['last year'][0]) * df_user['SG T2G'][0] / 100
     sg_a2g = (data['SG_A2G_2022']*df_user_biased['this year'][0]  + data['SG_A2G_2021']*df_user_biased['last year'][0]) * df_user['SG A2G'][0] / 100
     sg_atg = (data['SG_ATG_2022']*df_user_biased['this year'][0]  + data['SG_ATG_2021']*df_user_biased['last year'][0]) * df_user['SG ATG'][0] / 100
     sg_total = (data['SG_Total_2022']*df_user_biased['this year'][0]  + data['SG_Total_2021']*df_user_biased['last year'][0]) * df_user['SG Total'][0]/100
@@ -106,8 +109,9 @@ def results_output():
     sgmasters = (data['MastersSG']*((df_user_biased['last year'][0] + df_user_biased['this year'][0])/2) * df_user['SG Masters'][0]/100)
 
     results = {'Name': data['PLAYER NAME']
-               , 'Total SG per round': (sg_ott + sg_a2g + sg_atg + sg_putt + sgpar5 + sgpar4 + sgpar3 + sgmasters + sg_total)
+               , 'Total SG per round': (sg_ott + sg_t2g + sg_a2g + sg_atg + sg_putt + sgpar5 + sgpar4 + sgpar3 + sgmasters + sg_total)
                , 'SG OTT Weighted': sg_ott
+               , 'SG T2G Weighted': sg_t2g
                , 'SG A2G Weighted': sg_a2g
                , 'SG ATG Weighted': sg_atg
                , 'SG Putt Weighted': sg_putt
