@@ -33,13 +33,13 @@ st.sidebar.write("""#### Choose your SG bias""")
 def user_input_features():
     sgott = st.sidebar.slider('SG Off the Tee', 0, 100, 70, 5)
     sga2g = st.sidebar.slider('SG Approach to Green', 0, 100, 90, 5)
-    sgatg = st.sidebar.slider('SG Around the Green', 0, 100, 50, 5)
-    sgputt = st.sidebar.slider('SG Putting', 0, 100, 25, 5)
-    sgmasters = st.sidebar.slider('SG Masters History', 0, 100, 80, 5)
+    sgatg = st.sidebar.slider('SG Around the Green', 0, 100, 70, 5)
+    sgputt = st.sidebar.slider('SG Putting', 0, 100, 75, 5)
+    sgmasters = st.sidebar.slider('SG Masters History', 0, 100, 70, 5)
     sgtotal = st.sidebar.slider('SG Total', 0, 100, 25, 5)
-    sgpar5 = st.sidebar.slider('SG Par 5s', 0, 100, 75, 5)
-    sgpar4 = st.sidebar.slider('SG Par 4s', 0, 100, 25, 5)
-    sgpar3 = st.sidebar.slider('SG Par 3s', 0, 100, 20, 5)
+    sgpar5 = st.sidebar.slider('SG Par 5s', 0, 100, 100, 5)
+    sgpar4 = st.sidebar.slider('SG Par 4s', 0, 100, 20, 5)
+    sgpar3 = st.sidebar.slider('SG Par 3s', 0, 100, 10, 5)
 
 
 
@@ -146,10 +146,10 @@ except:
     pass
 
 # create bar chart
-st.write("## RANKED RESULTS OF TOP 20")
+st.write("## RANKED RESULTS OF TOP 40")
 
 
-chart = alt.Chart(df_results2[:20]).mark_bar().encode(
+chart = alt.Chart(df_results2[:40]).mark_bar().encode(
     x=alt.X("prediction"),
     y=alt.Y('Name', sort='-x'),
     opacity=alt.value(1),
