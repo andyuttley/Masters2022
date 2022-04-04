@@ -60,7 +60,7 @@ df_user = user_input_features()
 if st.sidebar.checkbox("Choose a recency bias"):
     def user_input_biased():
         thisyear = st.sidebar.slider('2022 weighting', 0, 100, 100, 5)
-        lastyear = st.sidebar.slider('2021 weighting', 0, 100, 80, 5)
+        lastyear = st.sidebar.slider('2021 weighting', 0, 100, 40, 5)
         biased_data = {'this year': thisyear/100,
                        'last year': lastyear/100}
         biased = pd.DataFrame(biased_data, index=[0])
@@ -72,7 +72,7 @@ if st.sidebar.checkbox("Choose a recency bias"):
 else:
     def user_input_biased():
         thisyear = 100
-        lastyear = 25
+        lastyear = 40
         biased_data = {'this year': thisyear / 100,
                        'last year': lastyear / 100}
         biased = pd.DataFrame(biased_data, index=[0])
@@ -132,6 +132,7 @@ def softmax(x):
 
 df_results['prediction'] = softmax(df_results['Total SG per round'])
 df_results2 = df_results[['Name', 'prediction', 'Total SG per round']]
+df_results2 = 100/df_results2['prediction']
 df_results2.reset_index(inplace=True)
 
 winner = df_results2['Name'][0]
