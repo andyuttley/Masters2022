@@ -132,7 +132,7 @@ def softmax(x):
 
 df_results['prediction'] = softmax(df_results['Total SG per round'])
 df_results2 = df_results[['Name', 'prediction', 'Total SG per round']]
-df_results2['suggested_odds'] = 100/df_results2['prediction']
+df_results2['suggested_odds'] = (100/df_results2['prediction']).astype(str)+'/1'
 df_results2.reset_index(inplace=True)
 
 winner = df_results2['Name'][0]
