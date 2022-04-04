@@ -32,15 +32,15 @@ st.sidebar.header('Choose your weightings')
 st.sidebar.write("""#### Choose your SG bias""")
 def user_input_features():
     sgott = st.sidebar.slider('SG Off the Tee', 0, 100, 60, 5)
-    sgt2g = st.sidebar.slider('SG Tee to Green', 0, 100, 90, 5)
-    sga2g = st.sidebar.slider('SG Approach to Green', 0, 100, 60, 5)
-    sgatg = st.sidebar.slider('SG Around the Green', 0, 100, 65, 5)
-    sgputt = st.sidebar.slider('SG Putting', 0, 100, 20, 5)
+    sgt2g = st.sidebar.slider('SG Tee to Green', 0, 100, 60, 5)
+    sga2g = st.sidebar.slider('SG Approach to Green', 0, 100, 80, 5)
+    sgatg = st.sidebar.slider('SG Around the Green', 0, 100, 25, 5)
+    sgputt = st.sidebar.slider('SG Putting', 0, 100, 25, 5)
     sgmasters = st.sidebar.slider('SG Masters History', 0, 100, 70, 5)
-    sgtotal = st.sidebar.slider('SG Total', 0, 100, 90, 5)
-    sgpar5 = st.sidebar.slider('SG Par 5s', 0, 100, 90, 5)
-    sgpar4 = st.sidebar.slider('SG Par 4s', 0, 100, 20, 5)
-    sgpar3 = st.sidebar.slider('SG Par 3s', 0, 100, 10, 5)
+    sgtotal = st.sidebar.slider('SG Total', 0, 100, 70, 5)
+    sgpar5 = st.sidebar.slider('SG Par 5s', 0, 100, 60, 5)
+    sgpar4 = st.sidebar.slider('SG Par 4s', 0, 100, 50, 5)
+    sgpar3 = st.sidebar.slider('SG Par 3s', 0, 100, 5, 5)
 
 
 
