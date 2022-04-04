@@ -72,7 +72,7 @@ if st.sidebar.checkbox("Choose a recency bias"):
 else:
     def user_input_biased():
         thisyear = 100
-        lastyear = 60
+        lastyear = 25
         biased_data = {'this year': thisyear / 100,
                        'last year': lastyear / 100}
         biased = pd.DataFrame(biased_data, index=[0])
