@@ -31,14 +31,14 @@ st.sidebar.header('Choose your weightings')
 
 st.sidebar.write("""#### Choose your SG bias""")
 def user_input_features():
-    sgott = st.sidebar.slider('SG Off the Tee', 0, 100, 80, 5)
+    sgott = st.sidebar.slider('SG Off the Tee', 0, 100, 60, 5)
     sgt2g = st.sidebar.slider('SG Tee to Green', 0, 100, 90, 5)
-    sga2g = st.sidebar.slider('SG Approach to Green', 0, 100, 95, 5)
-    sgatg = st.sidebar.slider('SG Around the Green', 0, 100, 70, 5)
-    sgputt = st.sidebar.slider('SG Putting', 0, 100, 25, 5)
-    sgmasters = st.sidebar.slider('SG Masters History', 0, 100, 80, 5)
-    sgtotal = st.sidebar.slider('SG Total', 0, 100, 85, 5)
-    sgpar5 = st.sidebar.slider('SG Par 5s', 0, 100, 100, 5)
+    sga2g = st.sidebar.slider('SG Approach to Green', 0, 100, 60, 5)
+    sgatg = st.sidebar.slider('SG Around the Green', 0, 100, 65, 5)
+    sgputt = st.sidebar.slider('SG Putting', 0, 100, 20, 5)
+    sgmasters = st.sidebar.slider('SG Masters History', 0, 100, 70, 5)
+    sgtotal = st.sidebar.slider('SG Total', 0, 100, 90, 5)
+    sgpar5 = st.sidebar.slider('SG Par 5s', 0, 100, 90, 5)
     sgpar4 = st.sidebar.slider('SG Par 4s', 0, 100, 20, 5)
     sgpar3 = st.sidebar.slider('SG Par 3s', 0, 100, 10, 5)
 
@@ -109,7 +109,7 @@ def results_output():
     sgmasters = (data['MastersSG']*((df_user_biased['last year'][0] + df_user_biased['this year'][0])/2) * df_user['SG Masters'][0]/100)
 
     results = {'Name': data['PLAYER NAME']
-               , 'Total SG per round': (sg_ott + sg_t2g + sg_a2g + sg_atg + sg_putt + sgpar5 + sgpar4 + sgpar3 + sgmasters + sg_total)
+               , 'Total SG per round': (sg_ott + sg_t2g + sg_a2g + sg_atg + sg_putt + sgpar5 + sgpar4 + sgpar3 + sgmasters + (sg_total/9))
                , 'SG OTT Weighted': sg_ott
                , 'SG T2G Weighted': sg_t2g
                , 'SG A2G Weighted': sg_a2g
